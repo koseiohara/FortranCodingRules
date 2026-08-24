@@ -1075,7 +1075,7 @@ error blockの最初のmessageは`<ERROR STOP>`とする。
 
 その後、具体的messageを書く。
 
-fatal terminationには`ERROR STOP`を使用する。
+fatal terminationにはupper caseにて`ERROR STOP`を使用する。
 
 plain `stop`は使用しない。
 
@@ -1104,8 +1104,6 @@ external-library file abstractionがある場合は、そのAPIの仕様を確�
 binary I/O callの単位はlogical data recordと一致させる。
 
 一つのlogical recordをscalar writesへ不必要に分割してはならない。
-
-複数valuesで一つのrecordを構成する場合、work arrayへpackして一括writeする。
 
 recordに関する演算をすることを目的として宣言されるinteger変数は、例外なく`int64`またはそれ以上の表現範囲を持つ型を使用する。
 
@@ -1142,6 +1140,7 @@ file objectをprocedure間で不必要に持ち回らない。
 numerical correctnessとprecisionを計算速度とmemory usageに対して優先する。
 
 existing high-precision routineがある場合、単純intrinsic implementationへ劣化させない。
+特に、サイズが4以上の配列要素の総和にはbuilt-in functionの`sum()`の使用を禁止し、EDATがもつ`sum_hp()`を必ず使用する。
 
 integration、reduction、statisticsではlibrary implementationのmathematical definitionを確認する。
 
