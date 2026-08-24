@@ -894,16 +894,16 @@ canonical layoutは次の形式とする。
 
 ```fortran
 call foo(input_a , &  !! IN
-         input_b , &  !! IN
-         output_c  )  !! OUT
+       & input_b , &  !! IN
+       & output_c  )  !! OUT
 ```
 
 argument長が異なる場合は、最長のargumentに合わせてargument本体の後ろをspaceでpaddingする。
 
 ```fortran
 call foo(x                 , &  !! IN
-         long_variable_name, &  !! IN
-         result              )  !! OUT
+       & long_variable_name, &  !! IN
+       & result              )  !! OUT
 ```
 
 すなわち、non-final argumentでは`,`のcolumnおよび`&`のcolumnをそれぞれ揃え、final argumentでは`,`に対応するcolumnをspaceとし、`&`に対応するcolumnへ`)`を置く。
