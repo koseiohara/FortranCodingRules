@@ -800,6 +800,13 @@ nestが一段増えるごとに4 spaces増やす。
 continuation alignmentはblock indentationとは別規則で決める。
 
 
+## `contains` statement
+
+`contains`文は、直前の行と同じ深さのindentに記述する。
+
+`contains`文の次の行は、`contains`と同じ深さのindentに記述する。
+
+
 ## `if` Syntax
 
 block formは`if (condition) then`とする。
