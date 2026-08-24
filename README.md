@@ -22,28 +22,6 @@ scientific requirementによって決定される事項と、coding convention�
 要求仕様なしには決定できないscientific architectureを、本規約から架空に生成してはならない。
 
 
-## Design Order
-
-実装前に、以下をこの順序で決定する。
-
-1. application-level workflow
-1. scientific operations
-1. functional operations
-1. module responsibilities
-1. module dependencies
-1. public APIs
-1. data ownership
-1. allocation ownership
-1. scientific array shapes
-1. metadata sources
-1. external-library operations
-1. I/O logical records
-1. procedure hierarchy
-1. implementation
-
-procedure bodyを先に書き、後からmoduleへ振り分ける方式は禁止する。
-
-
 ## Language Level
 
 sourceはstandard-conforming free-form Fortranとする。
@@ -642,7 +620,7 @@ mixed-kind arithmeticを不要にimplicit conversionへ任せない。
 
 ## Literals
 
-working-precision real literalには`_rk` suffixを付ける。
+working-precision real literalには`_rk`、integer literalには`_ik` suffixを付ける。
 
 literal zero/oneもkind-sensitive calculationではkindを明示する。
 
