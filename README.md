@@ -876,18 +876,48 @@ continuation元とcontinuation先の両方に`&`を置く。
 
 argument本体を第1argument開始columnへ縦に揃える。
 
-non-final argumentsではargument直後にcommaを置く。
+non-final argumentとfinal argumentでは、argument本体の後ろをspaceでpaddingし、次のsuffixを同じcolumnsへ配置する。
 
-closing parenthesisだけを独立行へ置かない。
+- non-final argument: `, &`
+- final argument: `  )`
 
-argumentの区切りの`, &`とfinal argument直後の`  )`のcolumnを揃える。
+したがって、`,`の直前に置かれるspaceはargument separatorのspacingではなく、`, &`と`  )`をcolumn alignmentするためのpaddingである。
 
-multiline scientific/functional `call`では、`&`または`)`の後に2 space開け、intent属性を次のように記載する
+canonical layoutは次の形式とする。
+
+```fortran
+call foo(input_a , &  !! IN
+         input_b , &  !! IN
+         output_c  )  !! OUT
+```
+
+argument長が異なる場合は、最長のargumentに合わせてargument本体の後ろをspaceでpaddingする。
+
+```fortran
+call foo(x                 , &  !! IN
+         long_variable_name, &  !! IN
+         result              )  !! OUT
+```
+
+すなわち、non-final argumentでは`,`のcolumnおよび`&`のcolumnをそれぞれ揃え、final argumentでは`,`に対応するcolumnをspaceとし、`&`に対応するcolumnへ`)`を置く。
+
+spaceを`_`で表した場合、suffix部分は次の配置になる。
+
+```text
+,_&
+__)
+```
+
+closing parenthesisだけを独立行へ置いてはならない。
+
+multiline scientific/functional `call`では、`&`または`)`の後に2 spaces置き、intent属性を次のように記載する。
+
 - `!! IN`
 - `!! OUT`
 - `!! INOUT`
 
-procedureの場合は次のように記載する
+procedureの場合は次のように記載する。
+
 - `!! PROCEDURE`
 
 
