@@ -469,7 +469,7 @@ quantityごとに同じimplementationを複製しない。
 
 ## `pure`
 
-`pure`として成立するprocedureには可能な限り`pure`を付ける。
+`pure`として成立するprocedureには必ず`pure`を付ける。
 
 procedure設計時から、side effectが不要なoperationはpureとして成立する形を優先する。
 
@@ -702,7 +702,7 @@ group内では以下を揃える。
 
 ## Keyword Case
 
-Fortran language keywordsはlowercaseで書く。
+Fortran language keywordsは、規約内の別の箇所で記法の指定がない限りlowercaseで書く。
 
 intrinsic procedure namesもlowercaseで書く。
 
