@@ -605,6 +605,9 @@ working precisionが64-bit realの場合は`real64`を`rk`へrenameする。
 
 kindの選択は要求仕様、I/O format、numerical requirementから決定し、実装者が任意に変更してはならない。
 
+プログラム全体で共通のkind parameterを使用する場合には、global-state module内で一回宣言し、以後はそのmoduleから
+kind parameterを参照する。
+
 ## Precision
 
 default realへ依存しない。
@@ -623,6 +626,8 @@ mixed-kind arithmeticを不要にimplicit conversionへ任せない。
 working-precision real literalには`_rk`、integer literalには`_ik` suffixを付ける。
 
 literal zero/oneもkind-sensitive calculationではkindを明示する。
+
+ただし、integerに限り、表現範囲がdefault型で十分と判断される場合にはkind parameterの明示は不要とする。
 
 
 ## Procedure-local Layout
@@ -710,6 +715,7 @@ intrinsic procedure namesもlowercaseで書く。
 user-defined identifiersもlowercaseを基本とする。
 
 logical literalおよびlogical operatorはproject内で統一された表記を使用する。
+`.TRUE.`, `.FALSE.`, `.AND.`, `.OR.`, and `.NOT.`はuppercaseで表記する。
 
 preprocessor macrosはuppercaseを使用する。
 
@@ -1140,7 +1146,7 @@ file objectをprocedure間で不必要に持ち回らない。
 numerical correctnessとprecisionを計算速度とmemory usageに対して優先する。
 
 existing high-precision routineがある場合、単純intrinsic implementationへ劣化させない。
-特に、サイズが4以上の配列要素の総和にはbuilt-in functionの`sum()`の使用を禁止し、EDATがもつ`sum_hp()`を必ず使用する。
+特に、サイズが4以上のreal型配列要素の総和にはbuilt-in functionの`sum()`の使用を禁止し、EDATがもつ`sum_hp()`を必ず使用する。
 
 integration、reduction、statisticsではlibrary implementationのmathematical definitionを確認する。
 
