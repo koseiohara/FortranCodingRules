@@ -702,7 +702,8 @@ group内では以下を揃える。
 
 ## Keyword Case
 
-Fortran language keywordsは、規約内の別の箇所で記法の指定がない限りlowercaseで書く。
+Fortran language keywordsはlowercaseで書く。
+ただし、本規約で明示的にuppercaseを要求するtokenについては、その個別規則を優先する。
 
 intrinsic procedure namesもlowercaseで書く。
 
