@@ -10,18 +10,6 @@ procedure構成、data ownership、命名、宣言、formatting、numerical oper
 indentation、continuation、I/O等についても本規約を満たさなければならない。
 
 
-## Canonicality
-
-formattingについて複数の適合表現を許してはならない。
-
-本書に規定がなく、要求仕様からも決定できないsource representation上の選択肢が現れた場合、その場で任意に
-一つを選択してはならない。
-
-scientific requirementによって決定される事項と、coding conventionによって固定される事項を区別する。
-
-要求仕様なしには決定できないscientific architectureを、本規約から架空に生成してはならない。
-
-
 ## Language Level
 
 sourceはstandard-conforming free-form Fortranとする。
