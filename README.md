@@ -365,6 +365,23 @@ ownershipの基本は以下とする。
 ownerが曖昧なarrayを作らない。
 
 
+## Metadata Access
+
+program-wide configuration/metadataをcomputational procedureから直接参照してよいのは、
+top-level computational procedureだけとする。
+
+lower-level computational procedureはglobal-state moduleから
+configuration/metadataを直接参照してはならない。
+
+lower-level computational procedureが必要とする情報は、dummy argumentを通してcallerから受け取る。
+
+これらに対し、parameter属性を付与された変数は常に例外として扱われる。
+
+arrayのshapeから取得可能なdimension情報を、metadataとしてlower-level computational procedureへ
+渡してはならない。
+ただし、external libraryのAPIがarrayのdimension情報を独立したargumentとして要求する場合は、そのinterfaceに従う。
+
+
 ## Allocation Ownership
 
 allocateしたscopeが原則deallocateも行う。
@@ -398,6 +415,13 @@ major arrayでdimensionの意味が名前から明らかでない場合のみdim
 すなわち、`a=b`や`a(:)=1`のような記法を配列に対して例外なく禁止し、必ず`a(1:n)=b(1:n)`や`a(1:n)=1`のように記載する。
 これにより、配列とスカラの区別がしやすくなるとともに、allocatable arrayに対する自動再割り付けの使用が禁止される。
 これは、配列の宣言時の記法には適用されない。
+
+array dummyのshapeに関する情報は、原則として当該arrayに対する`size()`から取得する。
+`size()`が不適合な場合には、`shape()`, `lbound()`, `ubound()`などその他の形状取得built-in functionを使用する。
+arrayのshapeから取得可能なdimension sizeを、独立したdummy argumentとして受け取ってはならない。
+
+複数のarray dummyが同一shapeであることをoperationが要求する場合、procedure冒頭で`size()`を用いてshape consistencyを確認する。
+shape consistencyの確認後にscientific calculationを開始する。
 
 
 ## Dimension Comments
