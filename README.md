@@ -583,9 +583,9 @@ generic workspaceには`work`を使用する。
 
 ## Kind Names
 
-working real kindは`rk`とする。
+ソースコード全体で使用するworking real kindは`rk`とする。
 
-working integer kindは`ik`とする。
+ソースコード全体で使用するworking integer kindは`ik`とする。
 
 同じ意味に別のkind aliasを増やさない。
 
@@ -594,6 +594,8 @@ kind parameterは、`iso_fortran_env`から要求仕様で定めたkindをrename
 working precisionが32-bit realの場合は`real32`を`rk`へrenameする。
 
 working precisionが64-bit realの場合は`real64`を`rk`へrenameする。
+
+ただし、一部の用途・一部のスコープのみで特別に異なるkind parameterの変数を使用する場合は、個別に適切な名前により宣言する。
 
 kindの選択は要求仕様、I/O format、numerical requirementから決定し、実装者が任意に変更してはならない。
 
