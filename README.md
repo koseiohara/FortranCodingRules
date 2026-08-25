@@ -394,6 +394,10 @@ shapeはscientific dimensionsを可能な限り直接表す。
 
 major arrayでdimensionの意味が名前から明らかでない場合のみdimension commentを付ける。
 
+配列の参照には、必ずarray sectionを明記する。
+すなわち、`a=b`や`a(:)=1`のような記法を配列に対して例外なく禁止し、必ず`a(1:n)=b(1:n)`や`a(1:n)=1`のように記載する。
+これにより、配列とスカラの区別がしやすくなるとともに、allocatable arrayに対する自動再割り付けの使用が禁止される。
+
 
 ## Dimension Comments
 
